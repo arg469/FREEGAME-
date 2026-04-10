@@ -1,100 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Play Free Game</title>
+<title>Free Games</title>
 
 <style>
 body{
   background:#111;
   color:white;
   font-family: Arial;
+  margin:0;
+}
+
+header{
   text-align:center;
-  margin-top:15%;
+  padding:50px;
 }
 
-button{
-  padding:15px 40px;
-  font-size:20px;
-  background:#28a745;
-  border:none;
-  color:white;
+.games{
+  padding:50px;
+}
+
+.game{
+  background:#222;
+  margin:20px;
+  padding:20px;
   cursor:pointer;
+  border:1px solid #333;
 }
 
-button:hover{
-  background:#1e7e34;
+.locked{
+  color:gray;
 }
 
-#creepy{
+.hidden{
   display:none;
-  color:red;
-  font-family: monospace;
-  margin-top:20px;
 }
+
 </style>
 </head>
 
 <body>
 
-<h1>🎮 FREE GAME DOWNLOAD</h1>
-<p>100% safe. No virus. Just fun.</p>
+<header>
+  <h1>🎮 FREE GAME HUB</h1>
+  <p>Scroll down to play</p>
+</header>
 
-<button onclick="startGame()">PLAY</button>
+<div class="games">
 
-<div id="creepy"></div>
+  <div class="game" onclick="playGame('safe')">
+    😊 Happy Jump (FREE)
+  </div>
+
+  <div class="game locked" onclick="lockedGame()">
+    🔒 Night Watch (PASSWORD REQUIRED)
+  </div>
+
+  <div class="game locked" onclick="redirectPuzzle()">
+    🔒 Forgotten File (???)
+  </div>
+
+  <div class="game locked" onclick="videoGame()">
+    🎥 Lost Recording
+  </div>
+
+</div>
 
 <script>
+function playGame(type){
+  document.body.innerHTML = "<h1>Launching...</h1>";
 
-let stage = 0;
-
-function startGame(){
-  document.body.style.background = "black";
-  document.body.innerHTML = "<h1>Loading...</h1>";
-
-  setTimeout(nextStage, 2000);
-}
-
-function nextStage(){
-  stage++;
-
-  let messages = [
-    "Installing files...",
-    "Checking system...",
-    "Accessing camera...",
-    "Why are you still here?",
-    "You didn't close the page.",
-    "I can see you.",
-    "Don't leave."
-  ];
-
-  document.body.innerHTML = "<h1>" + messages[stage-1] + "</h1>";
-
-  // make it more creepy each stage
-  if(stage >= 3){
+  setTimeout(()=>{
+    document.body.innerHTML = "<h1>Why did you pick this one?</h1>";
     document.body.style.color = "red";
-  }
-
-  if(stage >= 5){
-    document.body.style.background = "black";
-  }
-
-  if(stage < messages.length){
-    setTimeout(nextStage, 2000);
-  } else {
-    finalStage();
-  }
+  },2000);
 }
-
-function finalStage(){
-  document.body.innerHTML = `
-    <h1>too late</h1>
-    <p>it knows you clicked</p>
-  `;
-
-  document.body.style.color = "red";
-}
-
-</script>
-
-</body>
-</html>
