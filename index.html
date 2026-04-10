@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Play Free Game</title>
+
+<style>
+body{
+  background:#111;
+  color:white;
+  font-family: Arial;
+  text-align:center;
+  margin-top:15%;
+}
+
+button{
+  padding:15px 40px;
+  font-size:20px;
+  background:#28a745;
+  border:none;
+  color:white;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#1e7e34;
+}
+
+#creepy{
+  display:none;
+  color:red;
+  font-family: monospace;
+  margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎮 FREE GAME DOWNLOAD</h1>
+<p>100% safe. No virus. Just fun.</p>
+
+<button onclick="startGame()">PLAY</button>
+
+<div id="creepy"></div>
+
+<script>
+
+let stage = 0;
+
+function startGame(){
+  document.body.style.background = "black";
+  document.body.innerHTML = "<h1>Loading...</h1>";
+
+  setTimeout(nextStage, 2000);
+}
+
+function nextStage(){
+  stage++;
+
+  let messages = [
+    "Installing files...",
+    "Checking system...",
+    "Accessing camera...",
+    "Why are you still here?",
+    "You didn't close the page.",
+    "I can see you.",
+    "Don't leave."
+  ];
+
+  document.body.innerHTML = "<h1>" + messages[stage-1] + "</h1>";
+
+  // make it more creepy each stage
+  if(stage >= 3){
+    document.body.style.color = "red";
+  }
+
+  if(stage >= 5){
+    document.body.style.background = "black";
+  }
+
+  if(stage < messages.length){
+    setTimeout(nextStage, 2000);
+  } else {
+    finalStage();
+  }
+}
+
+function finalStage(){
+  document.body.innerHTML = `
+    <h1>too late</h1>
+    <p>it knows you clicked</p>
+  `;
+
+  document.body.style.color = "red";
+}
+
+</script>
+
+</body>
+</html>
