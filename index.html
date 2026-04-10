@@ -1,23 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Free Games</title>
+<title>Game Hub</title>
 
 <style>
 body{
   background:#111;
   color:white;
-  font-family: Arial;
-  margin:0;
-}
-
-header{
+  font-family:Arial;
   text-align:center;
-  padding:50px;
-}
-
-.games{
-  padding:50px;
 }
 
 .game{
@@ -25,49 +16,21 @@ header{
   margin:20px;
   padding:20px;
   cursor:pointer;
-  border:1px solid #333;
 }
-
-.locked{
-  color:gray;
-}
-
-.hidden{
-  display:none;
-}
-
 </style>
 </head>
 
 <body>
 
-<header>
-  <h1>🎮 FREE GAME HUB</h1>
-  <p>Scroll down to play</p>
-</header>
+<h1>🎮 Free Games</h1>
 
-<div class="games">
-
-  <div class="game" onclick="playGame('safe')">
-    😊 Happy Jump (FREE)
-  </div>
-
-  <div class="game locked" onclick="lockedGame()">
-    🔒 Night Watch (PASSWORD REQUIRED)
-  </div>
-
-  <div class="game locked" onclick="redirectPuzzle()">
-    🔒 Forgotten File (???)
-  </div>
-
-  <div class="game locked" onclick="videoGame()">
-    🎥 Lost Recording
-  </div>
-
-</div>
+<div class="game" onclick="playGame()">Play Game</div>
+<div class="game" onclick="lockedGame()">🔒 Locked Game</div>
+<div class="game" onclick="redirectPuzzle()">🧩 Puzzle</div>
+<div class="game" onclick="videoGame()">🎥 Video</div>
 
 <script>
-function playGame(type){
+function playGame(){
   document.body.innerHTML = "<h1>Launching...</h1>";
 
   setTimeout(()=>{
@@ -75,3 +38,34 @@ function playGame(type){
     document.body.style.color = "red";
   },2000);
 }
+
+function lockedGame(){
+  let pass = prompt("Enter Password:");
+
+  if(pass === "1234"){
+    document.body.innerHTML = "<h1>Access Granted...</h1>";
+  } else {
+    alert("Wrong password.");
+  }
+}
+
+function redirectPuzzle(){
+  document.body.innerHTML = "<h1>Find the hidden page...</h1>";
+
+  setTimeout(()=>{
+    window.location.href = "secret.html";
+  },2000);
+}
+
+function videoGame(){
+  document.body.innerHTML = `
+    <h1>Loading Recording...</h1>
+    <video width="600" autoplay controls>
+      <source src="video.mp4" type="video/mp4">
+    </video>
+  `;
+}
+</script>
+
+</body>
+</html>
