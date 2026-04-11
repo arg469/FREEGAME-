@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy Jump</title>
+<style>
+body{
+  background:#87CEEB;
+  text-align:center;
+  font-family:Arial;
+}
+</style>
+</head>
+
+<body>
+
+<h1>😊 Happy Jump</h1>
+<p>Click to jump!</p>
+<button onclick="start()">START</button>
+
+<script>
+function start(){
+  document.body.innerHTML = "<h1>Loading...</h1>";
+
+  setTimeout(()=>{
+    document.body.style.background = "black";
+    document.body.style.color = "red";
+    document.body.innerHTML = "<h1>something went wrong</h1>";
+  },2000);
+
+  setTimeout(()=>{
+    document.body.innerHTML = "<h1>you weren't supposed to open this</h1>";
+  },4000);
+
+  setTimeout(()=>{
+    document.body.innerHTML = `
+      <h1>fragment recovered: 9</h1>
+      <p>TRUST NO ONE</p>
+    `;
+  },6000);
+}
+</script>
+
+</body>
+</html>
